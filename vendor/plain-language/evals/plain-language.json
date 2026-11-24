@@ -1,0 +1,23 @@
+{
+  "skill_name": "plain-language",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Explain this architecture to our non-technical stakeholders",
+      "expected_output": "Establishes what the reader already knows, finds the load-bearing idea, and closes any analogy by naming where it breaks.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "This draft is too jargon-heavy, simplify it",
+      "expected_output": "Decides per term whether to replace, teach, or cut, rather than replacing every precise term with a vague one.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Make this simpler for the exec summary",
+      "expected_output": "Keeps numbers, conditions, and uncertainty intact \u2014 does not let 'suggests' become 'shows'.",
+      "files": []
+    }
+  ]
+}
