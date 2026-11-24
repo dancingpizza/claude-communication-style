@@ -8,11 +8,12 @@
   4. Все относительные ссылки в Markdown ведут на существующие файлы,
      а якоря на существующие заголовки.
   5. Пути в обратных кавычках из основного SKILL.md существуют.
-  6. Файлы vendor/ совпадают с vendor/SHA256SUMS.
+  6. Файлы vendor/ совпадают с scripts/vendor.sha256.
+  7. В пакете кроме vendor/ только инструкция и рабочие справочники.
 
 Запуск из любого каталога:
   python3 scripts/check_bundle.py            проверить
-  python3 scripts/check_bundle.py --update   пересчитать vendor/SHA256SUMS
+  python3 scripts/check_bundle.py --update   пересчитать scripts/vendor.sha256
 Код выхода 0, если ошибок нет, иначе 1.
 """
 
@@ -21,9 +22,10 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[1]
+ROOT = REPO_ROOT / "skills/claude-communication-style"
 VENDOR = ROOT / "vendor"
-SUMS = VENDOR / "SHA256SUMS"
+SUMS = REPO_ROOT / "scripts/vendor.sha256"
 
 ALLOWED_KEYS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -31,13 +33,31 @@ LINK_RE = re.compile(r"(?<!\!)\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 FENCE_RE = re.compile(r"^\s*(```|~~~)")
 INLINE_CODE_RE = re.compile(r"`[^`]*`")
 CODE_PATH_RE = re.compile(r"`((?:vendor|references|scripts)/[^`\s]+)`")
-SKIPPED_DIRS = {".git", "__pycache__", "node_modules"}
+SKIPPED_DIRS = {".git", "__pycache__", "__pypackages__"}
+PACKAGE_FILES = {
+    "SKILL.md",
+    "references/decisions.md",
+    "references/examples.md",
+    "references/sources.md",
+}
 
 
 def bundle_files():
     for path in sorted(ROOT.rglob("*")):
         if path.is_file() and not SKIPPED_DIRS.intersection(path.relative_to(ROOT).parts):
             yield path
+
+
+def check_package_files(errors):
+    actual = {
+        path.relative_to(ROOT).as_posix()
+        for path in bundle_files()
+        if not path.is_relative_to(VENDOR)
+    }
+    for path in sorted(PACKAGE_FILES - actual):
+        errors.append(f"в пакете отсутствует: {path}")
+    for path in sorted(actual - PACKAGE_FILES):
+        errors.append(f"лишний файл в пакете: {path}")
 
 
 def parse_frontmatter(text):
@@ -154,7 +174,7 @@ def check_code_paths(errors):
 def vendor_digests():
     lines = []
     for path in bundle_files():
-        if path.is_relative_to(VENDOR) and path != SUMS:
+        if path.is_relative_to(VENDOR):
             digest = hashlib.sha256(path.read_bytes()).hexdigest()
             lines.append(f"{digest}  {path.relative_to(VENDOR).as_posix()}")
     return lines
@@ -162,7 +182,7 @@ def vendor_digests():
 
 def check_vendor(errors):
     if not SUMS.exists():
-        errors.append("нет vendor/SHA256SUMS, запустите с --update")
+        errors.append("нет scripts/vendor.sha256, запустите с --update")
         return
     expected = set(SUMS.read_text(encoding="utf-8").splitlines())
     actual = set(vendor_digests())
@@ -178,9 +198,10 @@ def check_vendor(errors):
 def main():
     if "--update" in sys.argv[1:]:
         SUMS.write_text("\n".join(vendor_digests()) + "\n", encoding="utf-8")
-        print(f"записан {SUMS.relative_to(ROOT)}")
+        print(f"записан {SUMS.relative_to(REPO_ROOT)}")
         return 0
     errors = []
+    check_package_files(errors)
     check_frontmatter(errors)
     check_nested_skill_files(errors)
     check_links(errors)

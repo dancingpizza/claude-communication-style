@@ -40,6 +40,6 @@ git clone https://github.com/dancingpizza/claude-communication-style.git
 - [Примеры на русском](skills/claude-communication-style/references/examples.md)
 - [Источники и лицензии сторонних материалов](skills/claude-communication-style/references/sources.md)
 
-Установщик берёт рабочие файлы из `skills/claude-communication-style/`. Наборы для проверки ответов лежат в [`evals/`](evals/) в корне репозитория.
+Установщик берёт рабочий пакет из `skills/claude-communication-style/`. Наборы для проверки ответов лежат в [`evals/`](evals/), материалы для сопровождения сторонних компонентов в [`dev/vendor/`](dev/vendor/), а проверка комплекта в [`scripts/`](scripts/).
 
-Из корня репозитория запустите `python3 skills/claude-communication-style/scripts/check_bundle.py`, чтобы проверить комплект. Python нужен только для этой проверки и необязательных скриптов Humanizer.
+Из корня репозитория запустите `python3 scripts/check_bundle.py`, чтобы проверить состав пакета, ссылки и контрольные суммы. Python нужен для этой проверки и двух необязательных скриптов Humanizer.
