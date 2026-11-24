@@ -6,11 +6,33 @@
 
 ## Установка
 
+Через `npx skills` (нужен Node.js 22.20 или новее). Для OpenCode во всех проектах:
+
+```sh
+npx skills add dancingpizza/claude-communication-style -a opencode -g
+```
+
+Чтобы установить только в текущий проект, запустите команду из его корня без `-g`. Для другого агента замените `opencode` или уберите `-a opencode`, чтобы выбрать агента при установке.
+
+Начните новую сессию. Если агент не выбрал скилл сам, попросите применить `claude-communication-style`.
+
+## Обновление
+
+Для глобальной установки через `npx skills`:
+
+```sh
+npx skills update claude-communication-style -g
+```
+
+Для установки в проекте выполните `npx skills update claude-communication-style -p` из корня проекта. Обновляется только этот скилл.
+
+## Установка вручную
+
 ```sh
 git clone https://github.com/dancingpizza/claude-communication-style.git
 ```
 
-Скопируйте папку `claude-communication-style` целиком в каталог скиллов своего агента. Для OpenCode это, например, `~/.config/opencode/skills/`. Начните новую сессию и попросите агента применить `claude-communication-style`, если он не выбрал его сам.
+Скопируйте папку целиком в каталог скиллов своего агента. Для OpenCode это, например, `~/.config/opencode/skills/`. Для обновления скачайте свежую версию и замените установленную копию.
 
 ## Материалы
 
