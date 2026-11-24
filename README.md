@@ -32,12 +32,14 @@ npx skills update claude-communication-style -g
 git clone https://github.com/dancingpizza/claude-communication-style.git
 ```
 
-Скопируйте папку целиком в каталог скиллов своего агента. Для OpenCode это, например, `~/.config/opencode/skills/`. Для обновления скачайте свежую версию и замените установленную копию.
+Скопируйте папку `skills/claude-communication-style/` в каталог скиллов своего агента. Для OpenCode это, например, `~/.config/opencode/skills/`. Для обновления скачайте свежую версию и замените установленную копию.
 
 ## Материалы
 
-- [Правила для агента](SKILL.md)
-- [Примеры на русском](references/examples.md)
-- [Источники и лицензии сторонних материалов](references/sources.md)
+- [Правила для агента](skills/claude-communication-style/SKILL.md)
+- [Примеры на русском](skills/claude-communication-style/references/examples.md)
+- [Источники и лицензии сторонних материалов](skills/claude-communication-style/references/sources.md)
 
-Для проверки файлов из корня скачанной папки запустите `python3 scripts/check_bundle.py`. Python нужен только для этой проверки и необязательных скриптов Humanizer.
+Установщик берёт рабочие файлы из `skills/claude-communication-style/`. Наборы для проверки ответов лежат в [`evals/`](evals/) в корне репозитория.
+
+Из корня репозитория запустите `python3 skills/claude-communication-style/scripts/check_bundle.py`, чтобы проверить комплект. Python нужен только для этой проверки и необязательных скриптов Humanizer.
