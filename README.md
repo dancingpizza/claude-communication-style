@@ -38,7 +38,7 @@ git clone https://github.com/dancingpizza/claude-communication-style.git
 
 - [Правила для агента](skills/claude-communication-style/SKILL.md)
 - [Примеры на русском](skills/claude-communication-style/references/examples.md)
-- [Источники и лицензии сторонних материалов](skills/claude-communication-style/references/sources.md)
+- [Источники и лицензии сторонних материалов](dev/sources.md)
 
 Установщик берёт рабочий пакет из `skills/claude-communication-style/`. Наборы для проверки ответов лежат в [`evals/`](evals/), материалы для сопровождения сторонних компонентов в [`dev/vendor/`](dev/vendor/), а проверка комплекта в [`scripts/`](scripts/).
 

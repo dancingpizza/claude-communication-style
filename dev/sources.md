@@ -8,10 +8,10 @@
 | Копия | Источник | Коммит | Лицензия |
 | --- | --- | --- | --- |
 | Не включён | [poulvinay/clear-explain](https://github.com/poulvinay/clear-explain) | `53467f390d9c8af53713968dfffb1c39103b5a28` | В репозитории не указана |
-| [vendor/humanizer/](../vendor/humanizer/) | [codxt/humanizer](https://github.com/codxt/humanizer) | `f4b448cb91e9f20ff4e0feab172c672851b63eee` | MIT, [LICENSE](../vendor/humanizer/LICENSE), [THIRD_PARTY_NOTICES.md](../vendor/humanizer/THIRD_PARTY_NOTICES.md) |
-| [vendor/plain-language/](../vendor/plain-language/) | [arjunprabhulal/agent-skills, skills/docs/plain-language](https://github.com/arjunprabhulal/agent-skills/tree/main/skills/docs/plain-language) | `42dd24080fce6d731d00e2a1134f398c3da4171b` | MIT, [LICENSE](../vendor/plain-language/LICENSE) из корня репозитория |
-| [vendor/talk-skill/](../vendor/talk-skill/) | [DeadAlmighty/talk-skill](https://github.com/DeadAlmighty/talk-skill) | `e48e4773422875f51868cf53a5172c38642fddc2` | MIT, [LICENSE](../vendor/talk-skill/LICENSE) |
-| [vendor/response-style/](../vendor/response-style/) | [gabrielmongefranco/repo-template, skills/response-style](https://github.com/gabrielmongefranco/repo-template/tree/main/skills/response-style) | `59dd405563f0ea975f34c2964debbc6b0215d251` | Текст скилла под GFDL 1.3 или новее ([FDL-1.3.txt](../vendor/response-style/FDL-1.3.txt)), код репозитория под GPL-3.0 ([LICENSE](../vendor/response-style/LICENSE), [NOTICE](../vendor/response-style/NOTICE)) |
+| [vendor/humanizer/](../skills/claude-communication-style/vendor/humanizer/) | [codxt/humanizer](https://github.com/codxt/humanizer) | `f4b448cb91e9f20ff4e0feab172c672851b63eee` | MIT, [LICENSE](../skills/claude-communication-style/vendor/humanizer/LICENSE), [THIRD_PARTY_NOTICES.md](../skills/claude-communication-style/vendor/humanizer/THIRD_PARTY_NOTICES.md) |
+| [vendor/plain-language/](../skills/claude-communication-style/vendor/plain-language/) | [arjunprabhulal/agent-skills, skills/docs/plain-language](https://github.com/arjunprabhulal/agent-skills/tree/main/skills/docs/plain-language) | `42dd24080fce6d731d00e2a1134f398c3da4171b` | MIT, [LICENSE](../skills/claude-communication-style/vendor/plain-language/LICENSE) из корня репозитория |
+| [vendor/talk-skill/](../skills/claude-communication-style/vendor/talk-skill/) | [DeadAlmighty/talk-skill](https://github.com/DeadAlmighty/talk-skill) | `e48e4773422875f51868cf53a5172c38642fddc2` | MIT, [LICENSE](../skills/claude-communication-style/vendor/talk-skill/LICENSE) |
+| [vendor/response-style/](../skills/claude-communication-style/vendor/response-style/) | [gabrielmongefranco/repo-template, skills/response-style](https://github.com/gabrielmongefranco/repo-template/tree/main/skills/response-style) | `59dd405563f0ea975f34c2964debbc6b0215d251` | Текст скилла под GFDL 1.3 или новее ([FDL-1.3.txt](../skills/claude-communication-style/vendor/response-style/FDL-1.3.txt)), код репозитория под GPL-3.0 ([LICENSE](../skills/claude-communication-style/vendor/response-style/LICENSE), [NOTICE](../skills/claude-communication-style/vendor/response-style/NOTICE)) |
 
 У Clear Explain не указана лицензия, поэтому оригинал не распространяется с этим
 скиллом. Правила объяснения и примеры по-русски есть в локальных материалах.
@@ -20,7 +20,7 @@
 
 В пакете сохранены рабочие инструкции Talk Skill, Plain Language и Humanizer,
 справочники Humanizer и два скрипта для проверки текста. Краткие правила
-Response Style собраны в [решениях](decisions.md). Полный исходный текст,
+Response Style собраны в [решениях](../skills/claude-communication-style/references/decisions.md). Полный исходный текст,
 заметки, тесты и служебные файлы сторонних проектов хранятся в исходном
 репозитории этого скилла, в `dev/vendor/` и `evals/`.
 
@@ -40,7 +40,7 @@ Response Style собраны в [решениях](decisions.md). Полный 
 вопроса за ответ, правка только того, что просили поменять, и запрет на мат, если
 собеседник сам не ругается. Разница между версиями такая: Opus строже к спискам в
 объяснениях, Sonnet допускает их для многосоставного содержания. Компромисс описан в
-[decisions.md](decisions.md), раздел 3.
+[decisions.md](../skills/claude-communication-style/references/decisions.md), раздел 3.
 
 ## Правила оформления скиллов
 

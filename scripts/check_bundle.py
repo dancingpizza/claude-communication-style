@@ -38,7 +38,6 @@ PACKAGE_FILES = {
     "SKILL.md",
     "references/decisions.md",
     "references/examples.md",
-    "references/sources.md",
 }
 
 
